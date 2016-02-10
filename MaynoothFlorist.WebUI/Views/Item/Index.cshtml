@@ -1,0 +1,47 @@
+﻿@model MaynoothFlorist.WebUI.ViewModels.ItemListViewModel
+
+@{
+    ViewBag.Title = "Index";
+    var iconsort = (ViewBag.sortOderValue);
+}
+
+<h2>Index</h2>
+
+<div class="container">
+    <style>
+        li {
+            display: inline-block;
+            float: none;
+            padding-left: 5px;
+            padding-right: 5px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+    <div class="row">
+        <ul>
+
+            @foreach (var item in Model.Items)
+            {
+                <li>
+
+                    <a href="#myModal" data-toggle="modal" data-img-url="@Url.Content("~/Products/")@Html.DisplayFor(modelItem => item.FlowerImageUrl)" onclick="GetItem('@item.FlowerName','@item.FlowerPrice','@item.FlowerDescription')">
+                        <div>
+                            <img src="@Url.Content("~/Products/")@Html.DisplayFor(modelItem => item.FlowerImageUrl)" alt="Product Image" class="img-thumbnail img-rounded" width="160" height="179" />
+                            <br />
+                            @Html.DisplayFor(modelItem => item.FlowerName)
+                            <br />
+                            <h4>
+                                €  @Html.DisplayFor(modelItem => item.FlowerPrice)
+                            </h4>
+                        </div>
+
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+
+</div>
+
