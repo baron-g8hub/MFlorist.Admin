@@ -10,6 +10,6 @@ namespace MaynoothFlorist.WebUI.ViewModels
     public class ItemListViewModel
     {
         public IEnumerable<MaynoothFloristItem> Items { get; set; }
-        public PagingInfo PagingInfo { get; set; }
+        //public PagingInfo PagingInfo { get; set; }
     }
 }

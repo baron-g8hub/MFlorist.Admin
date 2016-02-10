@@ -16,19 +16,6 @@ namespace DataAccessLayer
     {
         private readonly FlowersDbEntities _db = new FlowersDbEntities();
 
-        public IList<MaynoothFloristItem> GetFlowersList()
-        {
-            return (from x in _db.Products
-                    select new MaynoothFloristItem
-                    {
-                        FlowerId = x.Id,
-                        FlowerName = x.Name,
-                        FlowerPrice = x.Price,
-                        FlowerDescription = x.Description,
-                        FlowerImageUrl = x.Image
-                    }).ToList();
-        }
-
         public IQueryable<MaynoothFloristItem> GetItemList()
         {
             var items = (from x in _db.Products
@@ -44,24 +31,6 @@ namespace DataAccessLayer
             return items;
 
         }
-
-        
-
-        public IEnumerable<MaynoothFloristItem> Get()
-        {
-            return (from x in _db.Products
-                    orderby x.Id
-                    select new MaynoothFloristItem
-                    {
-                        FlowerId = x.Id,
-                        FlowerName = x.Name,
-                        FlowerPrice = x.Price,
-                        FlowerDescription = x.Description,
-                        FlowerImageUrl = x.Image
-                    }).ToList();
-
-        }
-
 
         public bool IsItemExist(decimal FlowerId)
         {

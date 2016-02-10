@@ -26,9 +26,9 @@
             {
                 <li>
 
-                    <a href="#myModal" data-toggle="modal" data-img-url="@Url.Content("~/Products/")@Html.DisplayFor(modelItem => item.FlowerImageUrl)" onclick="GetItem('@item.FlowerName','@item.FlowerPrice','@item.FlowerDescription')">
+                    <a href="#myModal" data-toggle="modal" data-img-url="@Url.Content("~/Images/")@Html.DisplayFor(modelItem => item.FlowerImageUrl)" onclick="GetItem('@item.FlowerName','@item.FlowerPrice','@item.FlowerDescription')">
                         <div>
-                            <img src="@Url.Content("~/Products/")@Html.DisplayFor(modelItem => item.FlowerImageUrl)" alt="Product Image" class="img-thumbnail img-rounded" width="160" height="179" />
+                            <img src="@Url.Content("~/Images/")@Html.DisplayFor(modelItem => item.FlowerImageUrl)" alt="Product Image" class="img-thumbnail img-rounded" width="160" height="179" />
                             <br />
                             @Html.DisplayFor(modelItem => item.FlowerName)
                             <br />
@@ -45,3 +45,71 @@
 
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+
+                <ul>
+                    <li>
+                        <div>
+
+                            <img alt="Product Image" class="img-thumbnail img-rounded" width="300" height="179" />
+
+                            <br />
+                            <h4>
+                                €   <input type="text" id="itemPrice" />
+                            </h4>
+                            <br />
+                            <h4>
+                                <input type="text" name="itemDescription" id="itemDescription" />
+                            </h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        function GetItem(name, price, description) {
+
+            console.log(name + price + description);
+
+            //alert(name + price);
+
+            //imageUrl.toString();
+
+            //$('#myModal').modal('show');
+
+            $('h4.modal-title').text(name);
+            $(".modal-body #itemName").val(name);
+            $(".modal-body #itemPrice").val(price);
+
+            //$(".modal-body #itemImageUrl").val(imageUrl);
+
+            $(".modal-body #itemDescription").val(description);
+
+
+        }
+
+        $('li a').click(function (e) {
+            $('#myModal img').attr('src', $(this).attr('data-img-url'));
+
+        });
+
+    </script>
+}

@@ -18,10 +18,7 @@ namespace BusinessLogicLayer
     public interface IRepository
     {
         IQueryable<MaynoothFloristItem> GetItemList();
-        IList<MaynoothFloristItem> GetFlowersList();
-
-        IEnumerable<MaynoothFloristItem> Get();
-
+             
         bool SaveItem(MaynoothFloristItem item);
         bool IsItemExist(decimal FlowerId);
     }
