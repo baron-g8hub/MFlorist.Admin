@@ -32,6 +32,23 @@ namespace DataAccessLayer
 
         }
 
+        public IQueryable<MaynoothFloristUser> GetUsers()
+        {
+            var getUser = (from x in _db.Users
+                           select new MaynoothFloristUser
+                           {
+                               Username = x.Username,
+                               Password = x.Password,
+                               FirstName = x.Firstname,
+                               LastName = x.Lastname,
+                               Email = x.Email,
+                               RegDate = x.RegDate.ToString()
+
+                           });
+
+            return getUser;
+        }
+        
         public bool IsItemExist(decimal FlowerId)
         {
             throw new NotImplementedException();
