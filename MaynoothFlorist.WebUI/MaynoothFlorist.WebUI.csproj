@@ -131,23 +131,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppHelpers\AlertMessageHelper.cs" />
-    <Compile Include="AppHelpers\CustomHandleErrorAttribute.cs" />
     <Compile Include="AppHelpers\NinjectDependencyResolver.cs" />
-    <Compile Include="AppHelpers\SessionExpireFilterAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ItemListViewModel.cs" />
     <Compile Include="ViewModels\PagingInfo.cs" />
-    <Compile Include="ViewModels\UserSession.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -185,7 +180,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Item\Index.cshtml" />
-    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
