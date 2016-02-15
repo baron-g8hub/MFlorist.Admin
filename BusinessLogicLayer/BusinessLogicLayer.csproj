@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ErrorInfo.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="MaynoothFloristItem.cs" />
+    <Compile Include="MaynoothFloristUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
