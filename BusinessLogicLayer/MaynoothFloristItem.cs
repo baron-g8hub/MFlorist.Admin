@@ -17,10 +17,10 @@ namespace BusinessLogicLayer
     [Serializable]
     public class MaynoothFloristItem
     {
-        [Required]
+
         public decimal FlowerId { get; set; }
 
-        [Required]
+
         public string FlowerName { get; set; }
 
 
@@ -35,10 +35,6 @@ namespace BusinessLogicLayer
 
         public IRepository Repository { get; set; }
 
-        /// <summary>
-        /// Get the item list from DB and can be queryable
-        /// </summary>
-        /// <returns></returns>
         public IQueryable<MaynoothFloristItem> GetItemList()
         {
             return Repository.GetItemList();
