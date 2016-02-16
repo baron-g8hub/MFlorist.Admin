@@ -19,6 +19,7 @@ namespace MaynoothFlorist.WebUI.Controllers
         public ViewResult Index(string sortOrder)
         {
 
+
             var itemList = _mfItem.GetItemList(); //returns IQueryable<MaynoothFloristItem> representing an unknown number of products. a thousand maybe?
 
             ViewBag.sortOderValue = sortOrder;

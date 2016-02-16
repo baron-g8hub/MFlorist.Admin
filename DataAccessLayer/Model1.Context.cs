@@ -13,10 +13,10 @@ namespace DataAccessLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FlowersDbEntities : DbContext
+    public partial class ProductsDbEntities : DbContext
     {
-        public FlowersDbEntities()
-            : base("name=FlowersDbEntities")
+        public ProductsDbEntities()
+            : base("name=ProductsDbEntities")
         {
         }
     
@@ -29,7 +29,5 @@ namespace DataAccessLayer
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductType> ProductTypes { get; set; }
         public virtual DbSet<User> Users { get; set; }
-
-       // public System.Data.Entity.DbSet<MaynoothFlorist.WebUI.ViewModels.ItemListViewModel> ItemListViewModels { get; set; }
     }
 }

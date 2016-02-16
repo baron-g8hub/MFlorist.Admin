@@ -14,7 +14,7 @@ namespace DataAccessLayer
     /// </summary>
     public class MFRepository : IRepository
     {
-        private readonly FlowersDbEntities _db = new FlowersDbEntities();
+        private readonly ProductsDbEntities _db = new ProductsDbEntities();
 
         public IQueryable<MaynoothFloristItem> GetItemList()
         {
@@ -29,26 +29,23 @@ namespace DataAccessLayer
                          });
 
             return items;
-
         }
 
-        public IQueryable<MaynoothFloristUser> GetUsers()
+        public IList<MaynoothFloristUser> GetUsers()
         {
-            var getUser = (from x in _db.Users
-                           select new MaynoothFloristUser
-                           {
-                               Username = x.Username,
-                               Password = x.Password,
-                               FirstName = x.Firstname,
-                               LastName = x.Lastname,
-                               Email = x.Email,
-                               RegDate = x.RegDate.ToString()
-
-                           });
-
-            return getUser;
+            return (from x in _db.Users
+                    select new MaynoothFloristUser
+                    {
+                        Id = x.Id,
+                        UserName = x.Username,
+                        PassWord = x.Password,
+                        //RegDate = x.RegDate.Date,
+                        Email = x.Email,
+                        FirstName = x.Firstname,
+                        LastName = x.Lastname
+                    }).ToList();
         }
-        
+
         public bool IsItemExist(decimal FlowerId)
         {
             throw new NotImplementedException();

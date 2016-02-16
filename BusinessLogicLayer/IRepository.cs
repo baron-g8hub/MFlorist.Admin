@@ -15,10 +15,10 @@ namespace BusinessLogicLayer
     /// Scenario 1: Unit Tests - No need actual connection to datastore or database
     /// Scenario 2: Actual usage of Database or datastore
     /// </summary>
-    public interface IRepository
+    public interface IRepository 
     {
         IQueryable<MaynoothFloristItem> GetItemList();
-        IQueryable<MaynoothFloristUser> GetUsers();
+        IList<MaynoothFloristUser> GetUsers();
         bool SaveItem(MaynoothFloristItem item);
         bool IsItemExist(decimal FlowerId);
     }
