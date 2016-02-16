@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BusinessLogicLayer;
 using DataAccessLayer;
+using DataAccessLayer;
+using BusinessLogicLayer;
 
 namespace MaynoothFlorist.WebUI.ViewModels
 {

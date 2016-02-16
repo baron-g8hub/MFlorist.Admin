@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Ninject;
 using Ninject.Syntax;
-using BusinessLogicLayer;
 using DataAccessLayer;
+using DataAccessLayer;
+using BusinessLogicLayer;
 
 namespace MaynoothFlorist.WebUI.AppHelpers
 {

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BusinessLogicLayer;
+using DataAccessLayer;
 using System.Web.Security;
 using MaynoothFlorist.WebUI.ViewModels;
 using System.Collections;
+using MaynoothFlorist.WebUI.AppHelpers;
+using BusinessLogicLayer;
 
 namespace MaynoothFlorist.WebUI.Controllers
 {
@@ -50,7 +52,7 @@ namespace MaynoothFlorist.WebUI.Controllers
                 }
 
                 //ModelState.AddModelError("", "Invalid username or password!");
-                //this.FlashError("Invalid Credentials: ", "You've entered an invalid username or password.");
+                this.FlashError("Invalid Credentials: ", "You've entered an invalid username or password.");
             }
 
             return View(user);
