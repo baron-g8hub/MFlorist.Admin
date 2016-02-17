@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccessLayer;
+using BusinessLogicLayer;
 
-namespace BusinessLogicLayer
+namespace DataAccessLayer
 {
     /// <summary>
     /// Author  : Baron Lugtu (Maynooth Florist)

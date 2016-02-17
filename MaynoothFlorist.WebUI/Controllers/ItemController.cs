@@ -1,10 +1,25 @@
 ﻿using System.Web.Mvc;
-using DataAccessLayer;
 using MaynoothFlorist.WebUI.ViewModels;
 using BusinessLogicLayer;
+using System;
+using MaynoothFlorist.WebUI.App_Start;
+using MaynoothFlorist.WebUI.AppHelpers;
+using System.Linq;
+using DataAccessLayer;
 
 namespace MaynoothFlorist.WebUI.Controllers
 {
+    /// <summary>
+    /// Author  : Baron Lugtu (Maynooth Florist)
+    /// Date    : February 16, 2016 
+    /// 
+    /// Item Controller - this can be accessed only by authenticated user
+    /// 
+    /// </summary>
+    //[Authorize]
+    [CustomHandleError]
+    [SessionExpireFilter]
+    [Serializable]
     public class ItemController : Controller
     {
         private readonly MaynoothFloristItem _mfItem = new MaynoothFloristItem();
@@ -16,11 +31,12 @@ namespace MaynoothFlorist.WebUI.Controllers
             _mfItem.Repository = repository;
         }
 
-        // GET: Item
-        public ViewResult Index(string sortOrder)
+        //
+        // GET: /Item/
+        [NoCache]
+        public ViewResult Index(string sortOrder, UserSession session)
         {
-
-
+                       
             var itemList = _mfItem.GetItemList(); //returns IQueryable<MaynoothFloristItem> representing an unknown number of products. a thousand maybe?
 
             ViewBag.sortOderValue = sortOrder;

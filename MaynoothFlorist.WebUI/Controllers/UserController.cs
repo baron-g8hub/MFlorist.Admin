@@ -1,34 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using BusinessLogicLayer;
 using DataAccessLayer;
-using System.Web.Security;
-using MaynoothFlorist.WebUI.ViewModels;
-using System.Collections;
+using MaynoothFlorist.WebUI.App_Start;
 using MaynoothFlorist.WebUI.AppHelpers;
-using BusinessLogicLayer;
+using MaynoothFlorist.WebUI.ViewModels;
+using System;
+using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MaynoothFlorist.WebUI.Controllers
 {
+    [CustomHandleError]
+    [Serializable]
     public class UserController : Controller
-    {
-
-        private readonly MaynoothFloristUser _mfUser = new MaynoothFloristUser();
-
-        public int PageSize = 10;
-
-        public UserController(IRepository repository)
-        {
-            _mfUser.Repository = repository;
-        }
-
+    {             
         [HttpGet]
         public ActionResult Login(string returnUrl)
         {
-            // itemList = _mfUser.GetUsers();
-
+           
             ViewBag.ReturnUrl = returnUrl;
 
             return View();
@@ -37,16 +25,15 @@ namespace MaynoothFlorist.WebUI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(MaynoothFloristUser user, string returnUrl, UserSession session)
-        {
-            var userList = _mfUser.GetUsers();
-            
+        {           
+            user.Repository = new MFRepository();
+
             if (ModelState.IsValid)
             {
-                if (user.IsValid(user, user.UserName, user.PassWord, userList))
+                if (user.IsValid(user, user.UserName, user.PassWord))
                 {
-                    //session.Name = user.Username;
-                    //session.LocationID = user.Mfgnumber;
-
+                    session.Name = user.UserName;
+      
                     FormsAuthentication.SetAuthCookie(user.UserName, false);
                     return RedirectToLocal(returnUrl);
                 }
@@ -58,6 +45,12 @@ namespace MaynoothFlorist.WebUI.Controllers
             return View(user);
         }
 
+
+        public ViewResult SessionInfo(UserSession session)
+        {
+            return View(session);
+        }
+
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -67,5 +60,6 @@ namespace MaynoothFlorist.WebUI.Controllers
 
             return RedirectToAction("Index", "Item");
         }
+
     }
 }

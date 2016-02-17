@@ -4,7 +4,6 @@ using System.Web.Mvc;
 using Ninject;
 using Ninject.Syntax;
 using DataAccessLayer;
-using DataAccessLayer;
 using BusinessLogicLayer;
 
 namespace MaynoothFlorist.WebUI.AppHelpers

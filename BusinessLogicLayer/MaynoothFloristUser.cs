@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer
 {
+    [Serializable]
     public class MaynoothFloristUser
     {
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "UserName")]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "PassWord")]
+        [Display(Name = "Password")]
         public string PassWord { get; set; }
 
         public string RegDate { get; set; }
@@ -36,12 +37,11 @@ namespace BusinessLogicLayer
             return Repository.GetUsers();
         }
 
-
-
-        public bool IsValid(MaynoothFloristUser user, string userName, string passWord, IList<MaynoothFloristUser> userList)
+                    
+        public bool IsValid(MaynoothFloristUser user, string userName, string passWord)
         {
-            
-            var userExist = (from x in userList
+          
+            var userExist = (from x in user.Repository.GetUsers()
                              where x.UserName == user.UserName && x.PassWord == user.PassWord
                              select x).FirstOrDefault();
 
